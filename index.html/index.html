@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Book hotels across India by state and city with flexible cancellation and secure payment options.">
+<title>StayIndia – Book Hotels Across India</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#" onclick="tab('search')">Stay<span>India</span></a>
+    <nav>
+      <button id="n-search" class="on" onclick="tab('search')">Find Hotels</button>
+      <button id="n-manage" onclick="tab('manage')">Manage Booking</button>
+      <button id="n-policy" onclick="tab('policy')">Policies</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="wrap">
+    <h1>Find your perfect stay in India</h1>
+    <p>Select a state and city, tell us how many guests, and we suggest the right hotels and rooms.</p>
+    <div class="panel search">
+      <div class="f"><label for="st">State / UT</label><select id="st"></select></div>
+      <div class="f"><label for="ct">City</label><select id="ct"></select></div>
+      <div class="f"><label for="ci">Check-in</label><input type="date" id="ci"></div>
+      <div class="f"><label for="co">Check-out</label><input type="date" id="co"></div>
+      <div class="f"><label for="gu">Guests</label><input type="number" id="gu" min="1" max="40" value="2"></div>
+      <div class="f"><label for="rm">Rooms</label><input type="number" id="rm" min="1" max="15" value="1"></div>
+      <button class="btn" onclick="search()">Search Hotels</button>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="t-search">
+    <div id="toolbar" class="toolbar hide">
+      <span id="count"></span>
+      <label>Sort by
+        <select id="sort" onchange="renderList()">
+          <option value="price">Price: Low to High</option>
+          <option value="priceD">Price: High to Low</option>
+          <option value="rating">Rating</option>
+          <option value="dist">Distance</option>
+        </select>
+      </label>
+    </div>
+    <div id="res"></div>
+  </section>
+
+  <section id="t-manage" class="hide">
+    <div class="panel manage">
+      <h2>Manage your booking</h2>
+      <div class="f"><label for="lid">Booking ID</label><input id="lid" placeholder="SI-XXXXXX"></div>
+      <div class="f"><label for="lph">Mobile number</label><input id="lph" maxlength="10" placeholder="10-digit number"></div>
+      <button class="btn" onclick="lookup()">Find Booking</button>
+      <button class="btn ghost" onclick="listAll()">All my bookings</button>
+    </div>
+    <div id="bk"></div>
+  </section>
+
+  <section id="t-policy" class="hide">
+    <div class="panel doc">
+      <h2>Cancellation &amp; Refund Policy</h2>
+      <ul>
+        <li><b>48 hours or more</b> before check-in: 100% refund</li>
+        <li><b>24 to 48 hours</b> before check-in: 50% refund</li>
+        <li><b>Less than 24 hours</b> or no-show: no refund</li>
+      </ul>
+      <p>Refunds are credited to the original payment method within 5–7 working days.</p>
+      <h2>Booking Changes</h2>
+      <p>Dates, guests and rooms can be changed before check-in. The updated total is shown before you confirm. Any excess amount paid is refunded.</p>
+      <h2>Payments</h2>
+      <p>Pay in full, or secure your room with a 25% advance and pay the rest at the hotel. UPI, cards and net banking are supported. Prices include 12% GST.</p>
+      <p class="note">This is a demo site. Hotel data is sample data and no real payment is processed.</p>
+    </div>
+  </section>
+</main>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeM()"><div class="box" id="mb"></div></div>
+<footer><div class="wrap">© 2026 StayIndia. Demo hotel booking platform.</div></footer>
+<script src="script.js"></script>
+</body>
+</html>
